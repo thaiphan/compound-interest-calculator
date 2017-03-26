@@ -1,0 +1,24 @@
+.sidebar {
+  float: left;
+  padding: 20px;
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  input {
+    font-size: 14px;
+    min-width: 200px;
+    padding: 10px;
+  }
+}
+
+.main {
+  float: left;
+  width: 60%;
+}

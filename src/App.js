@@ -12,7 +12,9 @@ class App extends Component {
       initialDeposit: 100,
       regularDeposit: 0,
       numberOfYears: 5,
-      interestRate: 0.06
+      interestRate: 0.03,
+      applyTax: true,
+      annualIncome: 60000
     };
   }
 
@@ -22,11 +24,14 @@ class App extends Component {
     });
   }
 
+  handleToggle(event) {
+    this.setState({
+      [event.target.name]: !this.state[event.target.name]
+    });
+  }
+
   getYearlyInterest() {
     let yearlyInterest = [];
-
-    let annualIncome = 80000;
-    let applyTax = true;
 
     let currentPrincipal = this.state.initialDeposit;
     let totalInterest = 0;
@@ -44,7 +49,13 @@ class App extends Component {
       currentPrincipal = grossPrincipal;
 
       // How much tax the government deserves from your earnt interest
-      let capitalGainsTax = applyTax ? getIncomeTax(annualIncome + capitalGains) - getIncomeTax(annualIncome) : 0;
+      let capitalGainsTax = 0;
+      if (this.state.applyTax) {
+        let grossIncomeTax = getIncomeTax(+this.state.annualIncome + capitalGains);
+        let incomeTax = getIncomeTax(+this.state.annualIncome);
+
+        capitalGainsTax = grossIncomeTax - incomeTax;
+      }
 
       // Your money after the government receives its entitled share of your money
       currentPrincipal -= capitalGainsTax;
@@ -89,6 +100,14 @@ class App extends Component {
           <div className="form-group">
             <label>Interest Rate</label>
             <input type="text" name="interestRate" value={this.state.interestRate} onChange={this.handleFormChange.bind(this)} />
+          </div>
+          <div className="form-group">
+            <label>Apply Tax</label>
+            <input type="checkbox" name="applyTax" checked={this.state.applyTax} onChange={this.handleToggle.bind(this)} />
+          </div>
+          <div className="form-group">
+            <label>Annual Income</label>
+            <input type="text" name="annualIncome" value={this.state.annualIncome} onChange={this.handleFormChange.bind(this)} />
           </div>
         </div>
         <div className="main">

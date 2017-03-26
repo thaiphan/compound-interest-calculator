@@ -97,37 +97,43 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="sidebar">
-          <div className="form-group">
-            <label>Initial Deposit</label>
-            <input type="text" name="initialDeposit" value={this.state.initialDeposit} onChange={this.handleFormChange.bind(this)} />
+        <div className="pure-g">
+          <div className="sidebar pure-u-1 pure-u-md-1-5">
+            <h2>Your Strategy</h2>
+            <div className="form-group">
+              <label>Initial Deposit</label>
+              <input type="text" name="initialDeposit" value={this.state.initialDeposit} onChange={this.handleFormChange.bind(this)} />
+            </div>
+            <div className="form-group">
+              <label>Regular Deposit</label>
+              <input type="text" name="regularDeposit" value={this.state.regularDeposit} onChange={this.handleFormChange.bind(this)} />
+            </div>
+            <div className="form-group">
+              <label>Number of Years (Max. 60)</label>
+              <input type="number" name="numberOfYears" min="0" max="60" value={this.state.numberOfYears} onChange={this.handleFormChange.bind(this)} />
+            </div>
+            <div className="form-group">
+              <label>Interest Rate</label>
+              <input type="text" name="interestRate" value={this.state.interestRate} onChange={this.handleFormChange.bind(this)} />
+            </div>
+
+            <h2>Taxes</h2>
+            <div className="form-group">
+              <label>Apply Tax</label>
+              <input type="checkbox" name="applyTax" checked={this.state.applyTax} onChange={this.handleToggle.bind(this)} />
+            </div>
+            <div className="form-group">
+              <label>Annual Income</label>
+              <input type="text" name="annualIncome" value={this.state.annualIncome} onChange={this.handleFormChange.bind(this)} />
+            </div>
           </div>
-          <div className="form-group">
-            <label>Regular Deposit</label>
-            <input type="text" name="regularDeposit" value={this.state.regularDeposit} onChange={this.handleFormChange.bind(this)} />
+          <div className="content pure-u-1 pure-u-md-4-5">
+            <h2>Results</h2>
+            <BarChart
+              labels={this.getYearlyInterest().map(yearlyInterest => yearlyInterest.name)}
+              data={data}
+            />
           </div>
-          <div className="form-group">
-            <label>Number of Years (Max. 60)</label>
-            <input type="number" name="numberOfYears" min="0" max="60" value={this.state.numberOfYears} onChange={this.handleFormChange.bind(this)} />
-          </div>
-          <div className="form-group">
-            <label>Interest Rate</label>
-            <input type="text" name="interestRate" value={this.state.interestRate} onChange={this.handleFormChange.bind(this)} />
-          </div>
-          <div className="form-group">
-            <label>Apply Tax</label>
-            <input type="checkbox" name="applyTax" checked={this.state.applyTax} onChange={this.handleToggle.bind(this)} />
-          </div>
-          <div className="form-group">
-            <label>Annual Income</label>
-            <input type="text" name="annualIncome" value={this.state.annualIncome} onChange={this.handleFormChange.bind(this)} />
-          </div>
-        </div>
-        <div className="main">
-          <BarChart
-            labels={this.getYearlyInterest().map(yearlyInterest => yearlyInterest.name)}
-            data={data}
-          />
         </div>
       </div>
     );

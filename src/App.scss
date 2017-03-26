@@ -1,24 +1,58 @@
+@import '../node_modules/purecss/build/grids.css';
+@import '../node_modules/purecss/build/grids-responsive.css';
+
+$blue: rgb(61, 79, 93);
+$light-blue: rgb(84, 102, 116);
+$lighter-blue: rgb(176, 202, 219);
+$lightest-blue: rgb(228, 241, 251);
+
 .sidebar {
-  float: left;
-  padding: 20px;
+  background-color: $blue;
+  box-sizing: border-box;
+  padding: 1em;
+
+  h2 {
+    color: $lightest-blue;
+    margin-top: 0;
+  }
 
   .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 1em;
+
+    input {
+      background-color: $light-blue;
+      border: 1px solid $blue;
+      box-sizing: border-box;
+      color: $lightest-blue;
+      display: block;
+      font-size: 1em;
+      padding: 0.8em;
+      width: 100%;
+    }
+
+    label {
+      color: $lighter-blue;
+      display: inline-block;
+      font-size: 0.9em;
+      margin-bottom: 0.2em;
+    }
   }
 
-  label {
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  input {
-    font-size: 14px;
-    min-width: 200px;
-    padding: 10px;
+  @media screen and (min-width: 48em) {
+    bottom: 0;
+    position: fixed;
+    top: 0;
   }
 }
 
-.main {
-  float: left;
-  width: 60%;
+.content {
+  padding: 1em;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  @media screen and (min-width: 48em) {
+    margin-left: 20%;
+  }
 }

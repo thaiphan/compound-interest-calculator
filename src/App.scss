@@ -36,6 +36,18 @@ $lightest-blue: rgb(228, 241, 251);
       font-size: 0.9em;
       margin-bottom: 0.2em;
     }
+
+    select {
+      -webkit-appearance: none;
+      background-color: $light-blue;
+      border: 1px solid $blue;
+      border-radius: 0;
+      color: $lightest-blue;
+      display: block;
+      font-size: 1em;
+      padding: 0.8em;
+      width: 100%;
+    }
   }
 
   @media screen and (min-width: 48em) {

@@ -19,8 +19,21 @@ class App extends Component {
   }
 
   handleFormChange(event) {
+    let newValue = event.target.value;
+    switch (event.target.name) {
+      case 'numberOfYears':
+        if (newValue < 0) {
+          newValue = 0;
+        } else if (newValue > 60) {
+          newValue = 60;
+        }
+        break;
+      default:
+        newValue = event.target.value;
+    }
+
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: newValue
     });
   }
 
@@ -94,8 +107,8 @@ class App extends Component {
             <input type="text" name="regularDeposit" value={this.state.regularDeposit} onChange={this.handleFormChange.bind(this)} />
           </div>
           <div className="form-group">
-            <label>Number of Years</label>
-            <input type="text" name="numberOfYears" value={this.state.numberOfYears} onChange={this.handleFormChange.bind(this)} />
+            <label>Number of Years (Max. 60)</label>
+            <input type="number" name="numberOfYears" min="0" max="60" value={this.state.numberOfYears} onChange={this.handleFormChange.bind(this)} />
           </div>
           <div className="form-group">
             <label>Interest Rate</label>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import getCompoundInterest from './helpers/compound-interest';
 import getIncomeTax from './helpers/income-tax';
+import BarChart from './components/BarChart';
 
 class App extends Component {
   constructor(props) {
@@ -48,8 +49,10 @@ class App extends Component {
       // Your money after the government receives its entitled share of your money
       currentPrincipal -= capitalGainsTax;
 
+      totalInterest -= capitalGainsTax;
+
       yearlyInterest = yearlyInterest.concat({
-        name: i,
+        name: `Year ${i}`,
         principal: Math.round(currentPrincipal),
         regularDeposits: regularDeposits,
         capitalGainsTax: Math.round(capitalGainsTax),
@@ -61,6 +64,13 @@ class App extends Component {
   }
 
   render() {
+    let data = {
+      initialDeposit: this.getYearlyInterest().map(yearlyInterest => this.state.initialDeposit),
+      regularDeposits: this.getYearlyInterest().map(yearlyInterest => yearlyInterest.regularDeposits),
+      totalInterest: this.getYearlyInterest().map(yearlyInterest => yearlyInterest.totalInterest),
+      capitalGainsTax: this.getYearlyInterest().map(yearlyInterest => yearlyInterest.capitalGainsTax)
+    };
+
     return (
       <div className="App">
         <div className="sidebar">
@@ -82,6 +92,11 @@ class App extends Component {
           </div>
         </div>
         <div className="main">
+          <BarChart
+            labels={this.getYearlyInterest().map(yearlyInterest => yearlyInterest.name)}
+            data={data}
+          />
+
           <table>
             <thead>
               <tr><th />{this.getYearlyInterest().map((yearlyInterest, index) => <th key={index}>{yearlyInterest.name}</th>)}</tr>

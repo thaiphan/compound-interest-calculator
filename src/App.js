@@ -128,19 +128,6 @@ class App extends Component {
             labels={this.getYearlyInterest().map(yearlyInterest => yearlyInterest.name)}
             data={data}
           />
-
-          <table>
-            <thead>
-              <tr><th />{this.getYearlyInterest().map((yearlyInterest, index) => <th key={index}>{yearlyInterest.name}</th>)}</tr>
-            </thead>
-            <tbody>
-              <tr><td>Initial Deposit</td>{this.getYearlyInterest().map((yearlyInterest, index) => <td key={index}>{this.state.initialDeposit}</td>)}</tr>
-              <tr><td>Regular Deposits</td>{this.getYearlyInterest().map((yearlyInterest, index) => <td key={index}>{yearlyInterest.regularDeposits}</td>)}</tr>
-              <tr><td>Total Interest</td>{this.getYearlyInterest().map((yearlyInterest, index) => <td key={index}>{yearlyInterest.totalInterest}</td>)}</tr>
-              <tr><td>Capital Gains Tax</td>{this.getYearlyInterest().map((yearlyInterest, index) => <td key={index}>{yearlyInterest.capitalGainsTax}</td>)}</tr>
-              <tr><td>Total Savings</td>{this.getYearlyInterest().map((yearlyInterest, index) => <td key={index}>{yearlyInterest.principal}</td>)}</tr>
-            </tbody>
-          </table>
         </div>
       </div>
     );

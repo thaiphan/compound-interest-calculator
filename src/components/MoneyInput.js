@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import accounting from 'accounting'
+import numeral from 'numeral'
 
 export default class MoneyInput extends Component {
   constructor (props) {
@@ -37,7 +37,7 @@ export default class MoneyInput extends Component {
       <input
         type="text"
         name={this.props.name}
-        value={!this.state.focused ? accounting.formatMoney(this.state.inputValue) : this.state.inputValue}
+        value={!this.state.focused ? numeral(this.state.inputValue).format('$0,0') : this.state.inputValue}
         onChange={this.handleFormChange}
         onBlur={this.onBlur}
         onFocus={this.onFocus}

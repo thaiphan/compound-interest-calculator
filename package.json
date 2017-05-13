@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "accounting": "^0.4.1",
     "chart.js": "^2.5.0",
+    "numeral": "^2.0.6",
     "purecss": "^0.6.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"

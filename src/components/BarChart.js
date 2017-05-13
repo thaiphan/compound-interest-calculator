@@ -1,16 +1,17 @@
-import React, {Component} from 'react';
-import Chart from 'chart.js';
+import React, { Component } from 'react'
+import Chart from 'chart.js'
+import numeral from 'numeral'
 
 export default class BarChart extends Component {
-  chart;
+  chart
 
-  componentWillUpdate(nextProps) {
-    this.chart.config.data.labels = nextProps.labels;
+  componentWillUpdate (nextProps) {
+    this.chart.config.data.labels = nextProps.labels
     this.chart.config.data.datasets = this.calculateDataSet(nextProps.data)
-    this.chart.update();
+    this.chart.update()
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.chart = new Chart(this.canvas, {
       type: 'bar',
       data: {
@@ -26,15 +27,31 @@ export default class BarChart extends Component {
           ],
           yAxes: [
             {
-              stacked: true
+              stacked: true,
+              ticks: {
+                callback: value => numeral(value).format('$0a')
+              }
             }
           ]
+        },
+        tooltips: {
+          callbacks: {
+            label: (tooltipItem, data) => {
+              let label = data.datasets[tooltipItem.datasetIndex].label || ''
+
+              if (label) {
+                label += ': '
+              }
+              label += numeral(tooltipItem.yLabel).format('$0a')
+              return label
+            }
+          }
         }
       }
-    });
+    })
   }
 
-  calculateDataSet({initialDeposit, regularDeposits, totalInterest, capitalGainsTax}) {
+  calculateDataSet ({initialDeposit, regularDeposits, totalInterest, capitalGainsTax}) {
     return [
       {
         type: 'bar',
@@ -68,12 +85,12 @@ export default class BarChart extends Component {
         borderColor: 'rgba(194,200,212,1)',
         borderWidth: 1,
       }
-    ];
+    ]
   }
 
-  render() {
+  render () {
     return (
-      <canvas ref={canvas => this.canvas = canvas} />
-    );
+      <canvas ref={canvas => this.canvas = canvas}/>
+    )
   }
 }

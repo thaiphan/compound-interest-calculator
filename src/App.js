@@ -19,7 +19,7 @@ class App extends Component {
     }
   }
 
-  handleFormChange (event) {
+  handleFormChange = event => {
     let newValue = event.target.value
     switch (event.target.name) {
       case 'numberOfYears':
@@ -56,7 +56,7 @@ class App extends Component {
     })
   }
 
-  handleToggle (event) {
+  handleToggle = event => {
     this.setState({
       [event.target.name]: !this.state[event.target.name]
     })
@@ -152,19 +152,19 @@ class App extends Component {
             <div className="form-group">
               <label>Number of Years (Max. 60)</label>
               <input type="number" name="numberOfYears" min="0" max="60" value={this.state.numberOfYears}
-                     onChange={this.handleFormChange.bind(this)}/>
+                     onChange={this.handleFormChange}/>
             </div>
             <div className="form-group">
               <label>Interest Rate</label>
               <input type="text" name="interestRate" value={this.state.interestRate}
-                     onChange={this.handleFormChange.bind(this)}/>
+                     onChange={this.handleFormChange}/>
             </div>
 
             <h2>Taxes</h2>
             <div className="form-group">
               <label>Apply Tax</label>
               <input type="checkbox" name="applyTax" checked={this.state.applyTax}
-                     onChange={this.handleToggle.bind(this)}/>
+                     onChange={this.handleToggle}/>
             </div>
             <div className="form-group">
               <label>Annual Income</label>

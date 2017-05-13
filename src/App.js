@@ -83,10 +83,7 @@ class App extends Component {
       // How much tax the government deserves from your earnt interest
       let capitalGainsTax = 0
       if (this.state.applyTax) {
-        let grossIncomeTax = getIncomeTax(+this.state.annualIncome + capitalGains)
-        let incomeTax = getIncomeTax(+this.state.annualIncome)
-
-        capitalGainsTax = grossIncomeTax - incomeTax
+        capitalGainsTax = this.calculateCapitalGainsTax(capitalGains, +this.state.annualIncome)
       }
 
       // Your money after the government receives its entitled share of your money
@@ -104,6 +101,13 @@ class App extends Component {
     }
 
     return yearlyInterest
+  }
+
+  calculateCapitalGainsTax = (capitalGains, annualIncome) => {
+    let grossIncomeTax = getIncomeTax(annualIncome + capitalGains)
+    let incomeTax = getIncomeTax(annualIncome)
+
+    return grossIncomeTax - incomeTax
   }
 
   render () {

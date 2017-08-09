@@ -140,16 +140,6 @@ class App extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Deposit Frequency</label>
-              <select>
-                <option value="annually">Annually</option>
-                <option value="monthly">Monthly</option>
-                <option value="fortnightly">Fortnightly</option>
-                <option value="weekly">Weekly</option>
-                <option value="daily">Daily</option>
-              </select>
-            </div>
-            <div className="form-group">
               <label>Number of Years (Max. 60)</label>
               <input type="number" name="numberOfYears" min="0" max="60" value={this.state.numberOfYears}
                      onChange={this.handleFormChange}/>

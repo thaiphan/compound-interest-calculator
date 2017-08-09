@@ -5,6 +5,7 @@ import getIncomeTax from './helpers/income-tax'
 import BarChart from './components/BarChart'
 import MoneyInput from './components/MoneyInput'
 import PercentInput from './components/PercentInput'
+import YearInput from './components/YearInput'
 
 class App extends Component {
   constructor (props) {
@@ -60,6 +61,12 @@ class App extends Component {
   updateInterestRate = interestRate => {
     this.setState({
       interestRate: interestRate
+    })
+  }
+
+  updateNumberOfYears = numberOfYears => {
+    this.setState({
+      numberOfYears: numberOfYears
     })
   }
 
@@ -148,8 +155,11 @@ class App extends Component {
             </div>
             <div className="form-group">
               <label>Number of Years (Max. 60)</label>
-              <input type="number" name="numberOfYears" min="0" max="60" value={this.state.numberOfYears}
-                     onChange={this.handleFormChange}/>
+              <YearInput
+                name="numberOfYears"
+                inputValue={this.state.numberOfYears}
+                onUpdate={this.updateNumberOfYears}
+              />
             </div>
             <div className="form-group">
               <label>Interest Rate</label>

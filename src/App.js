@@ -4,6 +4,7 @@ import getCompoundInterest from './helpers/compound-interest'
 import getIncomeTax from './helpers/income-tax'
 import BarChart from './components/BarChart'
 import MoneyInput from './components/MoneyInput'
+import PercentInput from './components/PercentInput'
 
 class App extends Component {
   constructor (props) {
@@ -53,6 +54,12 @@ class App extends Component {
   updateAnnualIncome = annualIncome => {
     this.setState({
       annualIncome: annualIncome
+    })
+  }
+
+  updateInterestRate = interestRate => {
+    this.setState({
+      interestRate: interestRate
     })
   }
 
@@ -146,8 +153,11 @@ class App extends Component {
             </div>
             <div className="form-group">
               <label>Interest Rate</label>
-              <input type="text" name="interestRate" value={this.state.interestRate}
-                     onChange={this.handleFormChange}/>
+              <PercentInput
+                name="interestRate"
+                inputValue={this.state.interestRate}
+                onUpdate={this.updateInterestRate}
+              />
             </div>
 
             <h2>Taxes</h2>

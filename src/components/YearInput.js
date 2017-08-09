@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import numeral from 'numeral'
 
 export default class YearInput extends Component {
   constructor (props) {
@@ -39,7 +38,7 @@ export default class YearInput extends Component {
         name={this.props.name}
         min="1"
         max="60"
-        value={!this.state.focused ? `${this.state.inputValue} year${this.state.inputValue != 1 ? 's' : ''}` : this.state.inputValue}
+        value={!this.state.focused ? `${this.state.inputValue} year${this.state.inputValue !== '1' ? 's' : ''}` : this.state.inputValue}
         onChange={this.handleFormChange}
         onBlur={this.onBlur}
         onFocus={this.onFocus}

@@ -18,7 +18,9 @@ export default class YearInput extends Component {
 
   onBlur = () => {
     this.toggleInputFocus(false)
-    this.props.onUpdate(this.state.inputValue)
+    if (this.props.inputValue !== this.state.inputValue) {
+      this.props.onUpdate(this.state.inputValue)
+    }
   }
 
   onFocus = () => {

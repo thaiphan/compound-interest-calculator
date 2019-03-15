@@ -34,15 +34,19 @@ export default class MoneyInput extends Component {
 
   render () {
     return (
-      <input
-        type={this.state.focused ? 'number' : 'text'}
-        name={this.props.name}
-        min="0"
-        value={!this.state.focused ? numeral(this.state.inputValue).format('$0,0') : this.state.inputValue}
-        onChange={this.handleFormChange}
-        onBlur={this.onBlur}
-        onFocus={this.onFocus}
-      />
+      <div className="form-group">
+        <label htmlFor={this.props.id}>{this.props.label}</label>
+        <input
+          id={this.props.id}
+          type={this.state.focused ? 'number' : 'text'}
+          name={this.props.name}
+          min="0"
+          value={!this.state.focused ? numeral(this.state.inputValue).format('$0,0') : this.state.inputValue}
+          onChange={this.handleFormChange}
+          onBlur={this.onBlur}
+          onFocus={this.onFocus}
+        />
+      </div>
     )
   }
 }

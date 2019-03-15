@@ -34,16 +34,20 @@ export default class PercentInput extends Component {
 
   render () {
     return (
-      <input
-        step="0.01"
-        type={this.state.focused ? 'number' : 'text'}
-        name={this.props.name}
-        min="0"
-        value={!this.state.focused ? numeral(this.state.inputValue).format('0,0.00%') : this.state.inputValue}
-        onChange={this.handleFormChange}
-        onBlur={this.onBlur}
-        onFocus={this.onFocus}
-      />
+      <div className="form-group">
+        <label htmlFor={this.props.id}>{this.props.label}</label>
+        <input
+          id={this.props.id}
+          step="0.01"
+          type={this.state.focused ? 'number' : 'text'}
+          name={this.props.name}
+          min="0"
+          value={!this.state.focused ? numeral(this.state.inputValue).format('0,0.00%') : this.state.inputValue}
+          onChange={this.handleFormChange}
+          onBlur={this.onBlur}
+          onFocus={this.onFocus}
+        />
+      </div>
     )
   }
 }

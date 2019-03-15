@@ -137,38 +137,34 @@ class App extends Component {
         <div className="pure-g">
           <div className="sidebar pure-u-1 pure-u-md-1-5">
             <h2>Your Strategy</h2>
-            <div className="form-group">
-              <label>Initial Deposit</label>
-              <MoneyInput
-                name="initialDeposit"
-                inputValue={this.state.initialDeposit}
-                onUpdate={this.updateInitialDeposit}
-              />
-            </div>
-            <div className="form-group">
-              <label>Regular Deposit</label>
-              <MoneyInput
-                name="regularDeposit"
-                inputValue={this.state.regularDeposit}
-                onUpdate={this.updateRegularDeposit}
-              />
-            </div>
-            <div className="form-group">
-              <label>Number of Years (Max. 60)</label>
-              <YearInput
-                name="numberOfYears"
-                inputValue={this.state.numberOfYears}
-                onUpdate={this.updateNumberOfYears}
-              />
-            </div>
-            <div className="form-group">
-              <label>Interest Rate</label>
-              <PercentInput
-                name="interestRate"
-                inputValue={this.state.interestRate}
-                onUpdate={this.updateInterestRate}
-              />
-            </div>
+            <MoneyInput
+              id="initialDeposit"
+              label="Initial Deposit"
+              name="initialDeposit"
+              inputValue={this.state.initialDeposit}
+              onUpdate={this.updateInitialDeposit}
+            />
+            <MoneyInput
+              id="regularDeposit"
+              label="Regular Deposit"
+              name="regularDeposit"
+              inputValue={this.state.regularDeposit}
+              onUpdate={this.updateRegularDeposit}
+            />
+            <YearInput
+              id="numberOfYears"
+              label="Number of Years (Max. 60)"
+              name="numberOfYears"
+              inputValue={this.state.numberOfYears}
+              onUpdate={this.updateNumberOfYears}
+            />
+            <PercentInput
+              id="interestRate"
+              label="Interest Rate"
+              name="interestRate"
+              inputValue={this.state.interestRate}
+              onUpdate={this.updateInterestRate}
+            />
 
             <h2>Taxes</h2>
             <div className="form-group">
@@ -176,14 +172,13 @@ class App extends Component {
               <input type="checkbox" name="applyTax" checked={this.state.applyTax}
                      onChange={this.handleToggle}/>
             </div>
-            <div className="form-group">
-              <label>Annual Income</label>
-              <MoneyInput
-                name="annualIncome"
-                inputValue={this.state.annualIncome}
-                onUpdate={this.updateAnnualIncome}
-              />
-            </div>
+            <MoneyInput
+              id="annualIncome"
+              label="Annual Income"
+              name="annualIncome"
+              inputValue={this.state.annualIncome}
+              onUpdate={this.updateAnnualIncome}
+            />
           </div>
           <div className="content pure-u-1 pure-u-md-4-5">
             <h2>Results</h2>

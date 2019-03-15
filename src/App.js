@@ -146,7 +146,7 @@ class App extends Component {
             />
             <MoneyInput
               id="regularDeposit"
-              label="Regular Deposit"
+              label="Regular Deposit (Per Month)"
               name="regularDeposit"
               inputValue={this.state.regularDeposit}
               onUpdate={this.updateRegularDeposit}

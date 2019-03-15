@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css'
+import './App.scss'
 import getCompoundInterest from './helpers/compound-interest'
 import getIncomeTax from './helpers/income-tax'
 import BarChart from './components/BarChart'

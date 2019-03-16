@@ -168,17 +168,25 @@ class App extends Component {
 
             <h2>Taxes</h2>
             <div className="form-group">
-              <label>Apply Tax</label>
-              <input type="checkbox" name="applyTax" checked={this.state.applyTax}
-                     onChange={this.handleToggle}/>
+              <label htmlFor="applyTax">Apply Australian Capital Gains Tax</label>
+              <input
+                id="applyTax"
+                type="checkbox"
+                name="applyTax"
+                checked={this.state.applyTax}
+                onChange={this.handleToggle}
+              />
             </div>
-            <MoneyInput
-              id="annualIncome"
-              label="Annual Income"
-              name="annualIncome"
-              inputValue={this.state.annualIncome}
-              onUpdate={this.updateAnnualIncome}
-            />
+
+            {this.state.applyTax && (
+              <MoneyInput
+                id="annualIncome"
+                label="Annual Income"
+                name="annualIncome"
+                inputValue={this.state.annualIncome}
+                onUpdate={this.updateAnnualIncome}
+              />
+            )}
           </div>
           <div className="content pure-u-1 pure-u-md-4-5">
             <h2>Results</h2>

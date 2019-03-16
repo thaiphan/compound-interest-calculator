@@ -60,3 +60,24 @@ $lightest-blue: rgb(228, 241, 251);
     margin-top: 0;
   }
 }
+
+.quick-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 1em;
+
+  .quick-result {
+    border: 1px solid $blue;
+    padding: 1em;
+
+    h3 {
+      color: $light-blue;
+      margin: 0;
+    }
+
+    .quick-result-figure {
+      color: $blue;
+      font-size: 36px;
+    }
+  }
+}

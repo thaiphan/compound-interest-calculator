@@ -51,7 +51,13 @@ export default class BarChart extends Component {
     this.chart.update()
   }
 
-  calculateDataSet({initialDeposit, regularDeposits, totalInterest, capitalGainsTax}) {
+  render() {
+    return (
+      <canvas ref={canvas => this.canvas = canvas}/>
+    )
+  }
+
+  calculateDataSet = ({initialDeposit, regularDeposits, totalInterest, capitalGainsTax}) => {
     return [
       {
         type: 'bar',
@@ -86,11 +92,5 @@ export default class BarChart extends Component {
         borderWidth: 1,
       }
     ]
-  }
-
-  render() {
-    return (
-      <canvas ref={canvas => this.canvas = canvas}/>
-    )
   }
 }

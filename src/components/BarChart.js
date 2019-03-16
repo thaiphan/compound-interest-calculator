@@ -5,13 +5,7 @@ import numeral from 'numeral'
 export default class BarChart extends Component {
   chart
 
-  componentWillUpdate (nextProps) {
-    this.chart.config.data.labels = nextProps.labels
-    this.chart.config.data.datasets = this.calculateDataSet(nextProps.data)
-    this.chart.update()
-  }
-
-  componentDidMount () {
+  componentDidMount() {
     this.chart = new Chart(this.canvas, {
       type: 'bar',
       data: {
@@ -51,7 +45,13 @@ export default class BarChart extends Component {
     })
   }
 
-  calculateDataSet ({initialDeposit, regularDeposits, totalInterest, capitalGainsTax}) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    this.chart.config.data.labels = this.props.labels
+    this.chart.config.data.datasets = this.calculateDataSet(this.props.data)
+    this.chart.update()
+  }
+
+  calculateDataSet({initialDeposit, regularDeposits, totalInterest, capitalGainsTax}) {
     return [
       {
         type: 'bar',
@@ -88,7 +88,7 @@ export default class BarChart extends Component {
     ]
   }
 
-  render () {
+  render() {
     return (
       <canvas ref={canvas => this.canvas = canvas}/>
     )

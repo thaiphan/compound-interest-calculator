@@ -62,7 +62,7 @@ class App extends Component {
                 type="checkbox"
                 name="applyTax"
                 checked={this.state.applyTax}
-                onChange={this.handleToggle}
+                onChange={this.toggleApplyTax}
               />
             </div>
 
@@ -88,25 +88,6 @@ class App extends Component {
         </div>
       </div>
     )
-  }
-
-  handleFormChange = event => {
-    let newValue = event.target.value
-    switch (event.target.name) {
-      case 'numberOfYears':
-        if (newValue < 0) {
-          newValue = 0
-        } else if (newValue > 60) {
-          newValue = 60
-        }
-        break
-      default:
-        newValue = event.target.value
-    }
-
-    this.setState({
-      [event.target.name]: newValue
-    })
   }
 
   updateInitialDeposit = initialDeposit => {
@@ -139,9 +120,9 @@ class App extends Component {
     })
   }
 
-  handleToggle = event => {
+  toggleApplyTax = () => {
     this.setState({
-      [event.target.name]: !this.state[event.target.name]
+      applyTax: !this.state.applyTax
     })
   }
 }

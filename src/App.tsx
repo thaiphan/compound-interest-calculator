@@ -5,9 +5,22 @@ import PercentInput from './components/PercentInput'
 import YearInput from './components/YearInput'
 import Results from './components/Results'
 
-class App extends Component {
-  constructor (props) {
-    super(props)
+interface Props {
+
+}
+
+interface State {
+  initialDeposit: number;
+  regularDeposit: number;
+  numberOfYears: number;
+  interestRate: number;
+  applyTax: boolean;
+  annualIncome: number;
+}
+
+class App extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
       initialDeposit: 100,
@@ -16,10 +29,10 @@ class App extends Component {
       interestRate: 0.03,
       applyTax: true,
       annualIncome: 60000
-    }
+    };
   }
 
-  render () {
+  render() {
     return (
       <div className="App">
         <div className="pure-g">
@@ -90,37 +103,37 @@ class App extends Component {
     )
   }
 
-  updateInitialDeposit = initialDeposit => {
+  private updateInitialDeposit = (initialDeposit: number): void => {
     this.setState({
       initialDeposit: initialDeposit
     })
   }
 
-  updateRegularDeposit = regularDeposit => {
+  private updateRegularDeposit = (regularDeposit: number): void => {
     this.setState({
       regularDeposit: regularDeposit
     })
   }
 
-  updateAnnualIncome = annualIncome => {
+  private updateAnnualIncome = (annualIncome: number): void => {
     this.setState({
       annualIncome: annualIncome
     })
   }
 
-  updateInterestRate = interestRate => {
+  private updateInterestRate = (interestRate: number): void => {
     this.setState({
       interestRate: interestRate
     })
   }
 
-  updateNumberOfYears = numberOfYears => {
+  private updateNumberOfYears = (numberOfYears: number): void => {
     this.setState({
       numberOfYears: numberOfYears
     })
   }
 
-  toggleApplyTax = () => {
+  private toggleApplyTax = (): void => {
     this.setState({
       applyTax: !this.state.applyTax
     })

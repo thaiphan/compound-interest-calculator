@@ -9,6 +9,7 @@ $lightest-blue: rgb(228, 241, 251);
 .sidebar {
   background-color: $blue;
   box-sizing: border-box;
+  min-height: 100vh;
   padding: 1em;
 
   h2 {
@@ -49,22 +50,13 @@ $lightest-blue: rgb(228, 241, 251);
       width: 100%;
     }
   }
-
-  @media screen and (min-width: 48em) {
-    bottom: 0;
-    position: fixed;
-    top: 0;
-  }
 }
 
 .content {
+  box-sizing: border-box;
   padding: 1em;
 
   h2 {
     margin-top: 0;
-  }
-
-  @media screen and (min-width: 48em) {
-    margin-left: 20%;
   }
 }
